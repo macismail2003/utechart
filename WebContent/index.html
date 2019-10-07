@@ -1,0 +1,68 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv='Content-Type' content='text/html;charset=UTF-8'/>
+
+		<script src="https://sapui5.hana.ondemand.com/1.40.9/resources/sap-ui-core.js"
+				id="sap-ui-bootstrap"
+				data-sap-ui-libs="sap.m,sap.viz,sap.ui.table,sap.ui.commons"
+				data-sap-ui-theme="sap_bluecrystal">
+		</script>
+		<!-- only load the mobile lib "sap.m" and the "sap_bluecrystal" theme -->
+		<link rel="stylesheet" href="css/style.css" type="text/css" />
+		<script type="text/javascript" src="globalize.js"></script>
+        <script type="text/javascript" src="globalize.cultures.js"></script>
+
+      <!--  <script type="text/javascript" src="js/cus.js"></script>
+        <script type="text/javascript" src="js/sales.js"></script>	-->
+
+		<script>
+
+		var HomeUrlHash = window.location.href.replace(window.location.hash,'');
+		var urlSplitHome = HomeUrlHash.split('/');
+		if(urlSplitHome[2] == "newseaweb.seacoglobal.com" || urlSplitHome[2] == "seaweb.seacoglobal.com"){
+			var serviceUrl = "https://" + urlSplitHome[2] + "/sap/opu/odata/sap/ZUTEMON_CHART_SRV";
+		}else{
+			var serviceUrl = "http://" + urlSplitHome[2] + "/sap/opu/odata/sap/ZUTEMON_CHART_SRV";
+		}
+
+		var busyDialog = (busyDialog) ? busyDialog : new sap.m.BusyDialog('busy',
+				{
+					text : 'Loading...',
+					customIcon : 'images/ajax-loader.gif',
+					title : 'Loading...'
+				});
+
+		sap.ui.localResources("cuspiechart");
+		var app = new sap.m.App({initialPage:"idV_PieChart1"});
+		var page = sap.ui.view({id:"idV_PieChart1",
+                                        viewName:"cuspiechart.V_PieChart",
+                                        type:sap.ui.core.mvc.ViewType.XML});
+		app.addPage(page);
+		app.placeAt("content");
+		/*setTimeout(function() {
+				sap.ui.getCore().byId("idV_PieChart1--idCarouselTeaser").next();
+		}, 7000);*/
+
+		var IDLE_TIMEOUT = 2; //seconds
+		var _idleSecondsCounter = 0;
+
+		sap.m.Page.prototype.onmouseover=function() {
+			console.log('active');
+			_idleSecondsCounter = -10000;
+		};
+
+		sap.m.Page.prototype.onmouseout=function() {
+			console.log('out');
+			_idleSecondsCounter = 0;
+		};
+
+		//window.setInterval(CheckIdleTime, 10000);
+		</script>
+
+	</head>
+	<body class="sapUiBody" role="application">
+		<div id="content"></div>
+	</body>
+</html>

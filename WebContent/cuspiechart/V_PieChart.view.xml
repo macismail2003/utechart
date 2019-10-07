@@ -1,0 +1,65 @@
+<!-- <core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m" controllerName="cuspiechart.V_PieChart"
+        xmlns:viz="sap.viz.ui5.controls"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+
+  <Page title="Title" showHeader="false" enableScrolling="false">
+  <content>
+  	<Carousel id="idCarouselTeaser"></Carousel>
+  </content>
+  </Page>
+
+</core:View> -->
+
+<!-- <core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m" controllerName="cuspiechart.V_PieChart"
+        xmlns:viz="sap.viz.ui5.controls"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+
+<Page title="Title" showHeader="false" enableScrolling="false">
+  <content>
+  <FlexBox direction="Row" class="margintop105" justifyContent="SpaceBetween">
+
+  <ComboBox id="idComboRegion" text="/items" selectionChange="onSelect">
+	  <items>
+	  	<core:Item key="{key}" text="{text}"/>
+	  </items>
+  </ComboBox>
+
+  <Button text="Full Dashboard" type="Unstyled" class="submitBtn" press="opendash"></Button>
+
+  </FlexBox>
+  <ScrollContainer focusable="true" height="100%" horizontal="false" vertical="false" width="100%">
+  <viz:Popover id="idPopOver"></viz:Popover>
+  <viz:VizFrame height="300px" id="idVizFramePie" uiConfig="{applicationSet:'fiori'}" vizType="pie" legendVisible="true" width="100%"></viz:VizFrame>
+  </ScrollContainer>
+  </content>
+  </Page>
+</core:View>	-->
+
+<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m" controllerName="cuspiechart.V_PieChart"
+        xmlns:viz="sap.viz.ui5.controls"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+
+  <Page title="Title" showHeader="false" enableScrolling="false">
+  <content>
+
+  	        <!-- UTE Chart justifyContent="SpaceBetween"	-->
+
+  	        <FlexBox direction="Column">
+							<FlexBox direction="Row" class="margintop105">
+								<Label class="productLabel" text="Product : "></Label>
+								<MultiComboBox class="marginLeft" width="50px" id="idComboProduct" text="/items" selectionChange="onSelect">
+									<items>
+										<core:Item key="{key}" text="{text}"/>
+									</items>
+								</MultiComboBox>
+							</FlexBox>
+			  		<viz:VizFrame id="idVizFrameUTE" uiConfig="{applicationSet:'fiori'}" vizType="line" legendVisible="true" width="100%"></viz:VizFrame>
+  			</FlexBox>
+
+  </content>
+  </Page>
+
+</core:View>
